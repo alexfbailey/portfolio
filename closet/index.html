@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Alex's Finds — shop my closet by size. Curated thrift, vintage & preloved pieces.">
+  <title>Alex's Finds</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ── HEADER ── -->
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a href="#" class="logo" aria-label="Alex's Finds home">
+        <span class="logo-main">Alex's</span><span class="logo-italic"> finds</span>
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#closet" class="nav-link">Closet</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ── MOBILE NAV ── -->
+  <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" aria-hidden="true">
+    <a href="#closet" class="mobile-nav-link">Closet</a>
+    <a href="#about" class="mobile-nav-link">About</a>
+    <a href="#contact" class="mobile-nav-link">Contact</a>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-eyebrow">Welcome to</p>
+      <h1 class="hero-title">Alex's<br><em>Finds</em></h1>
+      <p class="hero-subtitle">Curated thrift, vintage &amp; preloved pieces<br class="hero-br"> — shop my closet by your size</p>
+    </div>
+    <div class="hero-scroll" aria-hidden="true">
+      <span>Scroll to browse</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ── CLOSET ── -->
+  <section class="closet" id="closet">
+
+    <!-- Filter Bar -->
+    <div class="filters-bar" id="filtersBar">
+      <div class="filters-inner" role="tablist" aria-label="Filter by category">
+        <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All</button>
+        <button class="filter-btn" data-filter="Outerwear" role="tab" aria-selected="false">Outerwear</button>
+        <button class="filter-btn" data-filter="Tops" role="tab" aria-selected="false">Tops</button>
+        <button class="filter-btn" data-filter="Bottoms" role="tab" aria-selected="false">Bottoms</button>
+        <button class="filter-btn" data-filter="Sets" role="tab" aria-selected="false">Sets</button>
+        <button class="filter-btn" data-filter="Accessories" role="tab" aria-selected="false">Accessories</button>
+        <button class="filter-btn" data-filter="Paris Trip" role="tab" aria-selected="false">Paris Trip</button>
+        <button class="filter-btn" data-filter="Everyday Finds" role="tab" aria-selected="false">Everyday Finds</button>
+      </div>
+    </div>
+
+    <!-- Grid -->
+    <div class="items-grid" id="itemsGrid" role="list" aria-label="Closet items"></div>
+
+  </section>
+
+  <!-- ── ABOUT ── -->
+  <section class="about" id="about">
+    <div class="about-inner">
+      <h2 class="section-title">The Concept</h2>
+      <p>Every piece in my wardrobe has a story. This is where I share my best thrift finds and vintage scores — all curated, all available to shop by your size.</p>
+      <p>I believe in slow fashion and second-hand first. Browse by category or collection, find your size, and click through to shop directly on Depop, Vestiaire, Poshmark, and more.</p>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer" id="contact">
+    <div class="footer-inner">
+      <p class="footer-logo">Alex's <em>Finds</em></p>
+      <p class="footer-tagline">shop slow. dress well.</p>
+      <div class="footer-links">
+        <a href="#" class="footer-link">Instagram</a>
+        <a href="#" class="footer-link">TikTok</a>
+      </div>
+      <p class="footer-copy">&copy; 2024 Alex's Finds. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ── ITEM MODAL ── -->
+  <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-label="Item detail" aria-hidden="true">
+    <div class="modal" id="modal">
+      <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+      <div class="modal-content">
+
+        <!-- Image -->
+        <div class="modal-image-wrap">
+          <div class="modal-image-bg" id="modalImageBg" aria-hidden="true"></div>
+          <!-- Replace the div above with an actual <img> when you add photos:
+               <img class="modal-img" id="modalImg" src="" alt=""> -->
+        </div>
+
+        <!-- Details -->
+        <div class="modal-details">
+          <div class="modal-meta">
+            <span class="modal-category" id="modalCategory"></span>
+            <span class="modal-collection" id="modalCollection"></span>
+          </div>
+          <h2 class="modal-title" id="modalTitle"></h2>
+          <p class="modal-description" id="modalDescription"></p>
+
+          <div class="modal-sizes-section">
+            <p class="sizes-label">Select your size</p>
+            <div class="sizes-row" id="modalSizes" role="group" aria-label="Size selector"></div>
+          </div>
+
+          <div class="modal-links-section">
+            <p class="sizes-label" id="shopLinksLabel">Available listings</p>
+            <div class="modal-links" id="modalLinks"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
