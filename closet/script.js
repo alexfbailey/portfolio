@@ -337,7 +337,7 @@ function renderItems(filter = "all") {
 function cardHTML(item) {
   const imageBlock = item.image
     ? `<img class="card-photo" src="${item.image}" alt="${item.name}" loading="lazy">`
-    : `<div class="card-placeholder" style="background:${gradient(item)};">
+    : `<div class="card-placeholder">
          <span class="card-placeholder-label">Photo coming soon</span>
        </div>`;
 
@@ -395,7 +395,7 @@ function openModal(id) {
 
   // Image
   const imgBg = $("#modalImageBg");
-  imgBg.style.background = gradient(item);
+  imgBg.style.background = "#f5f5f5";
   if (item.image) {
     imgBg.innerHTML = `<img class="modal-img" src="${item.image}" alt="${item.name}">`;
     imgBg.style.background = "";

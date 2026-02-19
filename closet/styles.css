@@ -171,9 +171,10 @@ ul    { list-style: none; }
 
 /* ── CLOSET LAYOUT ── */
 .closet {
-  padding-top: var(--nav-h);
+  margin-top: var(--nav-h);
   display: flex;
   align-items: flex-start;
+  min-height: calc(100svh - var(--nav-h));
 }
 
 /* ── SIDEBAR ── */
@@ -255,7 +256,7 @@ ul    { list-style: none; }
   position: relative;
   aspect-ratio: 3 / 4;
   overflow: hidden;
-  background: #f7f7f7;
+  background: #f5f5f5;
   transition: opacity var(--t);
 }
 
