@@ -528,8 +528,8 @@ function initHeaderScroll() {
     () => {
       header.style.background =
         window.scrollY > 40
-          ? "rgba(253, 250, 247, 0.97)"
-          : "rgba(253, 250, 247, 0.90)";
+          ? "rgba(255, 255, 255, 0.98)"
+          : "rgba(255, 255, 255, 0.92)";
     },
     { passive: true }
   );
