@@ -9,26 +9,34 @@
 
     html, body {
       width: 100%;
-      height: 100%;
-      overflow: hidden;
       background: #fff;
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       -webkit-font-smoothing: antialiased;
+      color: #000;
     }
 
-    /* ===== LAYOUT ===== */
+    /* ===== FEED ===== */
     .feed {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 24px 80px;
       display: flex;
-      width: 100%;
-      height: 100%;
+      flex-direction: column;
+      gap: 48px;
+    }
+
+    /* ===== SINGLE POST CARD ===== */
+    .post {
+      display: flex;
+      gap: 32px;
+      align-items: stretch;
     }
 
     /* ===== LEFT: OUTFIT PHOTO ===== */
-    .outfit-panel {
-      width: 54%;
-      height: 100%;
-      padding: 28px;
-      flex-shrink: 0;
+    .outfit-wrap {
+      flex: 0 0 54%;
+      min-height: 480px;
+      max-height: 720px;
     }
 
     .outfit-photo {
@@ -39,24 +47,28 @@
       display: block;
     }
 
-    /* ===== RIGHT: ITEMS PANEL ===== */
+    .outfit-placeholder {
+      width: 100%;
+      height: 100%;
+      min-height: 480px;
+      border-radius: 20px;
+      background: #f2f2f2;
+    }
+
+    /* ===== RIGHT: ITEMS ===== */
     .items-panel {
       flex: 1;
-      height: 100%;
       display: flex;
-      align-items: center;
+      flex-direction: column;
       justify-content: center;
-      position: relative;
-      padding: 48px 52px;
+      padding: 12px 0;
     }
 
     /* ===== 2×2 ITEMS GRID ===== */
     .items-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 20px 28px;
-      width: 100%;
-      max-width: 460px;
+      gap: 20px 24px;
     }
 
     .item-card {
@@ -75,7 +87,8 @@
       align-items: center;
       justify-content: center;
       padding: 6px;
-      background: #fff;
+      background: #f9f9f9;
+      border-radius: 12px;
     }
 
     .item-image {
@@ -85,31 +98,27 @@
       display: block;
     }
 
-    /* placeholder shown when no image set */
-    .item-image-wrap.empty::after {
-      content: '';
-      width: 75%;
-      height: 75%;
+    /* placeholder when no image */
+    .item-image-wrap.empty {
       background: #f2f2f2;
-      border-radius: 4px;
     }
 
     .item-heart {
       position: absolute;
-      top: 4px;
-      right: 4px;
-      width: 20px;
-      height: 20px;
+      top: 6px;
+      right: 6px;
+      width: 18px;
+      height: 18px;
       color: #c94b1e;
       flex-shrink: 0;
     }
 
     .item-info {
-      margin-top: 10px;
+      margin-top: 8px;
       text-align: center;
       display: flex;
       align-items: baseline;
-      gap: 5px;
+      gap: 4px;
       flex-wrap: wrap;
       justify-content: center;
     }
@@ -129,88 +138,54 @@
       letter-spacing: 0.04em;
     }
 
-    /* ===== NAV ARROWS ===== */
-    .arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: #c94b1e;
-      padding: 10px;
-      line-height: 0;
-      z-index: 10;
-      opacity: 0.85;
-      transition: opacity 0.2s;
+    /* ===== DIVIDER between posts ===== */
+    .post + .post {
+      padding-top: 48px;
+      border-top: 1px solid #f0f0f0;
+      margin-top: 0;
     }
 
-    .arrow:hover { opacity: 1; }
-
-    .arrow-left  { left: 8px; }
-    .arrow-right { right: 8px; }
-
-    .arrow svg {
-      width: 26px;
-      height: 26px;
-      stroke-width: 1.8;
+    /* Remove the gap when using border-top divider */
+    .feed {
+      gap: 0;
     }
 
-    /* ===== POST COUNTER ===== */
-    .post-counter {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 11px;
-      color: #bbb;
-      letter-spacing: 0.1em;
+    .post {
+      padding-bottom: 48px;
     }
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
-      .feed { flex-direction: column; overflow: auto; }
-      html, body { overflow: auto; height: auto; }
-      .outfit-panel { width: 100%; height: 60vw; padding: 16px 16px 8px; }
-      .outfit-photo { border-radius: 14px; }
-      .items-panel  { padding: 24px 40px 48px; }
+      .feed { padding: 20px 16px 60px; }
+
+      .post {
+        flex-direction: column;
+        gap: 20px;
+        padding-bottom: 40px;
+      }
+      .post + .post { padding-top: 40px; }
+
+      .outfit-wrap {
+        flex: none;
+        width: 100%;
+        min-height: 0;
+        max-height: none;
+        aspect-ratio: 4 / 5;
+      }
+
+      .outfit-placeholder { min-height: 0; }
+
+      .items-panel { padding: 0; }
     }
   </style>
 </head>
 <body>
 
-<div class="feed">
-
-  <!-- Left: outfit photo -->
-  <div class="outfit-panel">
-    <img class="outfit-photo" id="outfit-photo" src="" alt="Outfit">
-  </div>
-
-  <!-- Right: items -->
-  <div class="items-panel">
-
-    <button class="arrow arrow-left" onclick="prevPost()" aria-label="Previous">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-        <polyline points="15 18 9 12 15 6"/>
-      </svg>
-    </button>
-
-    <div class="items-grid" id="items-grid"></div>
-
-    <button class="arrow arrow-right" onclick="nextPost()" aria-label="Next">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-        <polyline points="9 18 15 12 9 6"/>
-      </svg>
-    </button>
-
-    <div class="post-counter" id="post-counter"></div>
-
-  </div>
-</div>
+<div class="feed" id="feed"></div>
 
 <script>
   // ============================================================
-  // ADD YOUR POSTS HERE
+  // ADD YOUR POSTS HERE — they will stack as an endless scroll
   //
   // Each post:
   //   outfitPhoto : URL of the main outfit image
@@ -229,38 +204,60 @@
         { image: '', brand: 'Brand', price: '$— USD', link: '#' },
         { image: '', brand: 'Brand', price: '$— USD', link: '#' },
       ]
-    }
+    },
+    {
+      outfitPhoto: '',
+      items: [
+        { image: '', brand: 'Brand', price: '$— USD', link: '#' },
+        { image: '', brand: 'Brand', price: '$— USD', link: '#' },
+        { image: '', brand: 'Brand', price: '$— USD', link: '#' },
+        { image: '', brand: 'Brand', price: '$— USD', link: '#' },
+      ]
+    },
   ];
   // ============================================================
-
-  let current = 0;
 
   const heartSVG = `<svg class="item-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
     <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
   </svg>`;
 
-  function render(index) {
-    const post = posts[index];
+  function buildPost(post) {
+    const article = document.createElement('article');
+    article.className = 'post';
 
-    // Outfit photo
-    const photo = document.getElementById('outfit-photo');
-    photo.src = post.outfitPhoto || '';
-    photo.style.display = post.outfitPhoto ? 'block' : 'none';
+    // Outfit photo (left)
+    const outfitWrap = document.createElement('div');
+    outfitWrap.className = 'outfit-wrap';
+    if (post.outfitPhoto) {
+      const img = document.createElement('img');
+      img.className = 'outfit-photo';
+      img.src = post.outfitPhoto;
+      img.alt = 'Outfit';
+      img.loading = 'lazy';
+      outfitWrap.appendChild(img);
+    } else {
+      const placeholder = document.createElement('div');
+      placeholder.className = 'outfit-placeholder';
+      outfitWrap.appendChild(placeholder);
+    }
 
-    // Items grid
-    const grid = document.getElementById('items-grid');
-    grid.innerHTML = '';
+    // Items panel (right)
+    const panel = document.createElement('div');
+    panel.className = 'items-panel';
+
+    const grid = document.createElement('div');
+    grid.className = 'items-grid';
+
     post.items.slice(0, 4).forEach(item => {
-      const isExternal = item.link && item.link !== '#';
       const a = document.createElement('a');
       a.className = 'item-card';
       a.href = item.link || '#';
-      if (isExternal) { a.target = '_blank'; a.rel = 'noopener'; }
+      if (item.link && item.link !== '#') { a.target = '_blank'; a.rel = 'noopener'; }
 
       const wrapClass = item.image ? 'item-image-wrap' : 'item-image-wrap empty';
       a.innerHTML = `
         <div class="${wrapClass}">
-          ${item.image ? `<img class="item-image" src="${item.image}" alt="${item.brand}">` : ''}
+          ${item.image ? `<img class="item-image" src="${item.image}" alt="${item.brand}" loading="lazy">` : ''}
           ${heartSVG}
         </div>
         <div class="item-info">
@@ -270,40 +267,14 @@
       grid.appendChild(a);
     });
 
-    // Counter — only show when there's more than one post
-    const counter = document.getElementById('post-counter');
-    counter.textContent = posts.length > 1 ? `${index + 1} / ${posts.length}` : '';
-
-    // Hide arrows when only one post
-    document.querySelector('.arrow-left').style.visibility  = posts.length > 1 ? 'visible' : 'hidden';
-    document.querySelector('.arrow-right').style.visibility = posts.length > 1 ? 'visible' : 'hidden';
+    panel.appendChild(grid);
+    article.appendChild(outfitWrap);
+    article.appendChild(panel);
+    return article;
   }
 
-  function nextPost() {
-    current = (current + 1) % posts.length;
-    render(current);
-  }
-
-  function prevPost() {
-    current = (current - 1 + posts.length) % posts.length;
-    render(current);
-  }
-
-  document.addEventListener('keydown', e => {
-    if (e.key === 'ArrowRight') nextPost();
-    if (e.key === 'ArrowLeft')  prevPost();
-  });
-
-  let touchStartX = 0;
-  document.addEventListener('touchstart', e => {
-    touchStartX = e.changedTouches[0].screenX;
-  }, { passive: true });
-  document.addEventListener('touchend', e => {
-    const diff = touchStartX - e.changedTouches[0].screenX;
-    if (Math.abs(diff) > 50) diff > 0 ? nextPost() : prevPost();
-  }, { passive: true });
-
-  render(0);
+  const feed = document.getElementById('feed');
+  posts.forEach(post => feed.appendChild(buildPost(post)));
 </script>
 
 </body>
