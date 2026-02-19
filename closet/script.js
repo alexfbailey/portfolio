@@ -335,8 +335,6 @@ function renderItems(filter = "all") {
 }
 
 function cardHTML(item) {
-  const allSizes = item.sizes.map((s) => s.size);
-
   const imageBlock = item.image
     ? `<img class="card-photo" src="${item.image}" alt="${item.name}" loading="lazy">`
     : `<div class="card-placeholder" style="background:${gradient(item)};">
@@ -353,16 +351,10 @@ function cardHTML(item) {
     >
       <div class="card-image-wrap">
         ${imageBlock}
-        <div class="card-overlay" aria-hidden="true">
-          <span class="card-overlay-cta">Shop by size →</span>
-        </div>
       </div>
       <div class="card-info">
-        <p class="card-meta">${item.category} · ${item.collection}</p>
+        <p class="card-meta">${item.category}</p>
         <h3 class="card-name">${item.name}</h3>
-        <div class="card-sizes" aria-label="Available sizes">
-          ${allSizes.map((sz) => `<span class="size-chip">${sz}</span>`).join("")}
-        </div>
       </div>
     </article>`;
 }
@@ -486,14 +478,10 @@ function closeModal() {
 
 // ── FILTERS ───────────────────────────────────────────────────
 function initFilters() {
-  $$(".filter-btn").forEach((btn) => {
+  $$(".sidebar-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
-      $$(".filter-btn").forEach((b) => {
-        b.classList.remove("active");
-        b.setAttribute("aria-selected", "false");
-      });
+      $$(".sidebar-btn").forEach((b) => b.classList.remove("active"));
       btn.classList.add("active");
-      btn.setAttribute("aria-selected", "true");
       currentFilter = btn.dataset.filter;
       renderItems(currentFilter);
     });
