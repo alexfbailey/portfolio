@@ -53,22 +53,33 @@
   <!-- ── CLOSET ── -->
   <section class="closet" id="closet">
 
-    <!-- Filter Bar -->
-    <div class="filters-bar" id="filtersBar">
-      <div class="filters-inner" role="tablist" aria-label="Filter by category">
-        <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All</button>
-        <button class="filter-btn" data-filter="Outerwear" role="tab" aria-selected="false">Outerwear</button>
-        <button class="filter-btn" data-filter="Tops" role="tab" aria-selected="false">Tops</button>
-        <button class="filter-btn" data-filter="Bottoms" role="tab" aria-selected="false">Bottoms</button>
-        <button class="filter-btn" data-filter="Sets" role="tab" aria-selected="false">Sets</button>
-        <button class="filter-btn" data-filter="Accessories" role="tab" aria-selected="false">Accessories</button>
-        <button class="filter-btn" data-filter="Paris Trip" role="tab" aria-selected="false">Paris Trip</button>
-        <button class="filter-btn" data-filter="Everyday Finds" role="tab" aria-selected="false">Everyday Finds</button>
+    <!-- Sidebar -->
+    <aside class="sidebar" aria-label="Filter by category">
+      <div class="sidebar-section">
+        <p class="sidebar-heading">Categories</p>
+        <ul class="sidebar-list" role="list">
+          <li><button class="sidebar-btn active" data-filter="all">All</button></li>
+          <li><button class="sidebar-btn" data-filter="Outerwear">Outerwear</button></li>
+          <li><button class="sidebar-btn" data-filter="Tops">Tops</button></li>
+          <li><button class="sidebar-btn" data-filter="Bottoms">Bottoms</button></li>
+          <li><button class="sidebar-btn" data-filter="Sets">Sets</button></li>
+          <li><button class="sidebar-btn" data-filter="Accessories">Accessories</button></li>
+        </ul>
       </div>
-    </div>
+      <div class="sidebar-section">
+        <p class="sidebar-heading">Collections</p>
+        <ul class="sidebar-list" role="list">
+          <li><button class="sidebar-btn" data-filter="Paris Trip">Paris Trip</button></li>
+          <li><button class="sidebar-btn" data-filter="Everyday Finds">Everyday Finds</button></li>
+          <li><button class="sidebar-btn" data-filter="Featured">Featured</button></li>
+        </ul>
+      </div>
+    </aside>
 
     <!-- Grid -->
-    <div class="items-grid" id="itemsGrid" role="list" aria-label="Closet items"></div>
+    <div class="closet-main">
+      <div class="items-grid" id="itemsGrid" role="list" aria-label="Closet items"></div>
+    </div>
 
   </section>
 
