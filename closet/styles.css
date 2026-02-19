@@ -31,7 +31,7 @@
 html  { scroll-behavior: smooth; font-size: 16px; }
 body  {
   font-family: var(--font-body);
-  background: var(--warm-white);
+  background: #ffffff;
   color: var(--charcoal);
   font-weight: 300;
   line-height: 1.65;
@@ -48,7 +48,7 @@ ul    { list-style: none; }
   top: 0; left: 0; right: 0;
   z-index: 200;
   height: var(--nav-h);
-  background: rgba(253, 250, 247, 0.9);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--taupe-light);
@@ -131,7 +131,7 @@ ul    { list-style: none; }
   top: var(--nav-h);
   left: 0; right: 0;
   z-index: 190;
-  background: var(--warm-white);
+  background: #ffffff;
   border-bottom: 1px solid var(--taupe-light);
   padding: 1.75rem 2rem;
   display: flex;
@@ -163,19 +163,10 @@ ul    { list-style: none; }
   align-items: center;
   justify-content: center;
   padding: calc(var(--nav-h) + 5rem) 2rem 5rem;
-  background: var(--cream);
+  background: #ffffff;
   position: relative;
   text-align: center;
   overflow: hidden;
-}
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 70% 60% at 65% 35%, rgba(139,155,122,0.15) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 40% at 20% 75%, rgba(197,209,184,0.10) 0%, transparent 60%);
-  pointer-events: none;
 }
 .hero-content { max-width: 700px; position: relative; }
 
@@ -241,7 +232,7 @@ ul    { list-style: none; }
   position: sticky;
   top: var(--nav-h);
   z-index: 100;
-  background: rgba(253, 250, 247, 0.96);
+  background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--taupe-light);
@@ -278,7 +269,7 @@ ul    { list-style: none; }
 }
 
 /* ── ITEMS GRID ── */
-.closet { padding: 4.5rem 0 6rem; background: var(--warm-white); }
+.closet { padding: 4.5rem 0 6rem; background: #ffffff; }
 
 .items-grid {
   max-width: var(--max-w);
@@ -286,111 +277,116 @@ ul    { list-style: none; }
   padding: 0 2rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1.75rem;
+  gap: 3rem 2rem;
 }
 
 /* ── ITEM CARD ── */
 .item-card {
   cursor: pointer;
   position: relative;
-  background: var(--cream);
-  transition: transform var(--t), box-shadow var(--t);
+  background: transparent;
+  transition: transform var(--t-slow);
   /* Scroll reveal */
   opacity: 0;
-  transform: translateY(18px);
+  transform: translateY(24px);
 }
 .item-card.visible {
   opacity: 1;
   transform: translateY(0);
-  transition: opacity var(--t-slow), transform var(--t-slow), box-shadow var(--t), box-shadow var(--t);
+  transition: opacity var(--t-slow), transform var(--t-slow);
 }
 .item-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 16px 48px rgba(42, 40, 37, 0.09);
+  transform: translateY(-10px);
 }
 
 .card-image-wrap {
   position: relative;
   aspect-ratio: 3 / 4;
   overflow: hidden;
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.08));
+  transition: filter var(--t-slow);
 }
+.item-card:hover .card-image-wrap {
+  filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.13));
+}
+
 /* Real photo: <img class="card-photo" src="..." alt="..."> */
 .card-photo {
   width: 100%; height: 100%;
   object-fit: cover;
   transition: transform var(--t-slow);
 }
-.item-card:hover .card-photo { transform: scale(1.04); }
+.item-card:hover .card-photo { transform: scale(1.03); }
 
 /* Placeholder gradient shown when no real photo */
 .card-placeholder {
   width: 100%; height: 100%;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
+  justify-content: center;
   padding: 1rem;
-  transition: transform var(--t-slow);
 }
-.item-card:hover .card-placeholder { transform: scale(1.04); }
 
 .card-placeholder-label {
-  font-size: 0.6rem;
-  letter-spacing: 0.12em;
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.45);
+  color: rgba(255,255,255,0.5);
   font-weight: 400;
 }
 
-/* Hover overlay */
+/* Hover overlay — subtle shop prompt */
 .card-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(30,27,24,0.52) 0%, transparent 55%);
-  opacity: 0;
-  transition: opacity var(--t);
   display: flex;
   align-items: flex-end;
-  padding: 1.25rem;
+  padding: 1rem;
+  opacity: 0;
+  transition: opacity var(--t);
 }
 .item-card:hover .card-overlay { opacity: 1; }
 .card-overlay-cta {
-  font-size: 0.62rem;
-  letter-spacing: 0.14em;
+  font-size: 0.6rem;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.92);
+  color: rgba(255,255,255,0.88);
   font-weight: 400;
+  background: rgba(0,0,0,0.28);
+  padding: 0.3rem 0.7rem;
+  backdrop-filter: blur(4px);
 }
 
 /* Card info */
-.card-info { padding: 0.9rem 0.6rem 0.6rem; }
+.card-info { padding: 1rem 0.25rem 0.5rem; }
 .card-meta {
-  font-size: 0.58rem;
-  letter-spacing: 0.11em;
+  font-size: 0.56rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--sage);
   font-weight: 400;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.25rem;
 }
 .card-name {
   font-family: var(--font-display);
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 400;
   color: var(--charcoal);
   line-height: 1.25;
-  margin-bottom: 0.55rem;
+  margin-bottom: 0.5rem;
 }
 .card-sizes {
   display: flex;
-  gap: 0.3rem;
+  gap: 0.25rem;
   flex-wrap: wrap;
 }
 .size-chip {
-  font-size: 0.55rem;
+  font-size: 0.52rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--charcoal-60);
-  background: var(--taupe-light);
-  padding: 0.18rem 0.45rem;
-  border-radius: 2px;
+  border: 1px solid var(--taupe-light);
+  padding: 0.15rem 0.4rem;
   font-weight: 400;
 }
 
@@ -416,7 +412,7 @@ ul    { list-style: none; }
 }
 
 .modal {
-  background: var(--warm-white);
+  background: #ffffff;
   width: 100%;
   max-width: 920px;
   max-height: 92svh;
@@ -614,7 +610,8 @@ ul    { list-style: none; }
 /* ── ABOUT ── */
 .about {
   padding: 7rem 2rem;
-  background: var(--cream);
+  background: #ffffff;
+  border-top: 1px solid var(--taupe-light);
 }
 .about-inner {
   max-width: 560px;
@@ -678,6 +675,23 @@ ul    { list-style: none; }
   letter-spacing: 0.06em;
   color: #4A4743;
 }
+
+/* ── FLOAT ANIMATION ── */
+@keyframes gentleFloat {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-6px); }
+}
+.item-card.visible:not(:hover) .card-image-wrap {
+  animation: gentleFloat 5s ease-in-out infinite;
+}
+/* stagger per card position */
+.item-card:nth-child(2) .card-image-wrap { animation-delay: 0.6s; }
+.item-card:nth-child(3) .card-image-wrap { animation-delay: 1.2s; }
+.item-card:nth-child(4) .card-image-wrap { animation-delay: 1.8s; }
+.item-card:nth-child(5) .card-image-wrap { animation-delay: 0.3s; }
+.item-card:nth-child(6) .card-image-wrap { animation-delay: 0.9s; }
+.item-card:nth-child(7) .card-image-wrap { animation-delay: 1.5s; }
+.item-card:nth-child(8) .card-image-wrap { animation-delay: 2.1s; }
 
 /* ── EMPTY STATE ── */
 .empty-state {
