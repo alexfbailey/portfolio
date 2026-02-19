@@ -337,7 +337,9 @@ function renderItems(filter = "all") {
 function cardHTML(item) {
   const imageBlock = item.image
     ? `<img class="card-photo" src="${item.image}" alt="${item.name}" loading="lazy">`
-    : `<div class="card-placeholder" style="background:${gradient(item)}"></div>`;
+    : `<div class="card-placeholder">
+         <span class="card-placeholder-label">Photo coming soon</span>
+       </div>`;
 
   return `
     <article
