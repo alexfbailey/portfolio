@@ -15,6 +15,21 @@
       color: #000;
     }
 
+    /* ===== INTRO LINE ===== */
+    .feed-intro {
+      max-width: 1100px;
+      margin: 28px auto 0;
+      padding: 0 24px 20px;
+      font-size: 12px;
+      color: #888;
+      line-height: 1.6;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    @media (max-width: 768px) {
+      .feed-intro { padding: 0 16px 16px; margin-top: 20px; }
+    }
+
     /* ===== FEED ===== */
     .feed {
       max-width: 1100px;
@@ -180,6 +195,8 @@
   </style>
 </head>
 <body>
+
+<p class="feed-intro">Browse my closet and thrift finds, find your size, and click through to shop directly on second hand or retail sites. Since second hand finds are often sold one at a time I update the site daily to add new listings.</p>
 
 <div class="feed" id="feed"></div>
 
