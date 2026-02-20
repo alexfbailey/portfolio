@@ -19,6 +19,31 @@
    Collections: Paris Trip, Everyday Finds, Featured
    ============================================================ */
 
+// ============================================================
+// OUTFIT POSTS — shown in the Outfits feed tab
+// Each post: outfitPhoto URL + up to 4 items
+// ============================================================
+const outfitPosts = [
+  {
+    outfitPhoto: '',
+    items: [
+      { image: '', brand: 'Brand', price: '$— USD', link: '#' },
+      { image: '', brand: 'Brand', price: '$— USD', link: '#' },
+      { image: '', brand: 'Brand', price: '$— USD', link: '#' },
+      { image: '', brand: 'Brand', price: '$— USD', link: '#' },
+    ]
+  },
+  {
+    outfitPhoto: '',
+    items: [
+      { image: '', brand: 'Brand', price: '$— USD', link: '#' },
+      { image: '', brand: 'Brand', price: '$— USD', link: '#' },
+      { image: '', brand: 'Brand', price: '$— USD', link: '#' },
+      { image: '', brand: 'Brand', price: '$— USD', link: '#' },
+    ]
+  },
+];
+
 const items = [
   {
     id: 1,

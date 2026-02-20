@@ -60,7 +60,17 @@
 
     <!-- Grid -->
     <div class="closet-main">
-      <div class="items-grid" id="itemsGrid" role="list" aria-label="Closet items"></div>
+      <div class="view-tabs">
+        <button class="view-tab active" data-view="shop">Shop</button>
+        <button class="view-tab" data-view="outfits">Outfits</button>
+      </div>
+      <div id="shopView">
+        <div class="items-grid" id="itemsGrid" role="list" aria-label="Closet items"></div>
+      </div>
+      <div id="outfitsView" class="view-hidden">
+        <p class="outfits-intro">Browse my closet and thrift finds, find your size, and click through to shop directly on second hand or retail sites. Since second hand finds are often sold one at a time I update the site daily to add new listings.</p>
+        <div id="outfitsFeed"></div>
+      </div>
     </div>
 
   </section>
